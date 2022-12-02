@@ -1,9 +1,10 @@
 import React from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
+import InputBase from '@mui/material/InputBase';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+import Fab from '@mui/material/Fab';
+import Tooltip from '@mui/material/Tooltip';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import styled from '@mui/material/styles/styled';
@@ -16,7 +17,7 @@ const Item = styled(Box)(({ theme }) => ({
   borderRadius: '12px',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-around'
+  justifyContent: 'space-between'
 }));
 
 const ListView = () => {
@@ -30,6 +31,12 @@ const ListView = () => {
         sx={{
           pt: '1.5rem',
           pl: '0.5rem',
+          [lightTheme.breakpoints.between('tablet', 'laptop')]: {
+            padding: '2rem'
+          },
+          [lightTheme.breakpoints.up('laptop')]: {
+            padding: '3rem'
+          },
           display: 'flex',
           flexDirection: 'column',
           gap: '1rem'
@@ -39,51 +46,78 @@ const ListView = () => {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem'
+            gap: '1rem'
           }}
-        >
-          <SearchIcon sx={{ color: 'lightgray' }} />
-          <TextField
+        > 
+          <InputBase
             sx={{
-              [lightTheme.breakpoints.down('tablet')]: {
-                width: '85%'
-              },
-              '& label.Mui-focused': {
-                color: lightTheme.palette.background.iconBg,
-              },
-              '& .MuiInput-underline:after': {
-                borderBottomColor: lightTheme.palette.background.iconBg,
-              },
-              '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  borderColor: 'transparent',
-                },
-                '&.Mui-focused fieldset': {
-                  borderColor: lightTheme.palette.background.iconBg,
-                  borderRadius: '12px'
-                },
-              },
               backgroundColor: lightTheme.palette.background.paper,
+              pl: '0.4rem',
+              pt: '0.4rem',
+              pb: '0.4rem',
+              width: '12rem',
+              [lightTheme.breakpoints.up('tablet')]: {
+                width: '16rem'
+              },
               borderRadius: '12px',
-              color: lightTheme.palette.background.iconBg
+              fontFamily: lightTheme.typography.fontFamily,
             }}
-            color='primary'
-            label='Search for items'
-            size='small'
+            placeholder='Search items'
+            startAdornment={
+              <SearchIcon sx={{ color: 'gray', mr: '0.5rem' }}/>
+            }
           />
+          <Tooltip title='Add item'>
+            <Fab
+              sx={{ 
+                boxShadow: 'none', 
+                height: '36px', 
+                width: '36px', 
+                backgroundColor: lightTheme.palette.background.paper,
+                textTransform: 'none',
+                display: 'flex',
+                gap: '1rem'
+              }}
+            >
+              <AddIcon sx={{ color: 'gray' }} />
+            </Fab>
+          </Tooltip>
         </Box>
-        <Typography variant='h5'>Test header</Typography>
+        <Typography variant='h6'>Test header</Typography>
         <Grid
           container
-          spacing={1}
+          columns={{
+            mobile: 12,
+            tablet: 12,
+            laptop: 12,
+            desktop: 12
+          }}
+          spacing={{
+            mobile: 1,
+            tablet: 1.5,
+            laptop: 2,
+            desktop: 2.5
+          }}
         >
-          <Grid mobile={6}>
+          <Grid mobile={6} tablet={4} laptop={3} desktop={3}>
             <Item>
               Test 1
               <AddIcon sx={{ color: 'lightgray' }} />
             </Item>
           </Grid>
-          <Grid mobile={6}>
+          <Grid mobile={6} tablet={4} laptop={3} desktop={3}>
+            <Item>
+              Test 2
+              <AddIcon sx={{ color: 'lightgray' }} />
+            </Item>
+          </Grid>
+          <Grid mobile={6} tablet={4} laptop={3} desktop={3}>
+            <Item>
+              Avocado toast
+              <AddIcon sx={{ color: 'lightgray' }} />
+            </Item>
+          </Grid>
+          <Grid mobile={6} tablet={4} laptop={3} desktop={3}>
             <Item>
               Test 2
               <AddIcon sx={{ color: 'lightgray' }} />

@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import { lightTheme } from '../styles/themes/lightTheme';
-import { Badge, Tooltip } from '@mui/material';
 import Menu from '../components/Menu';
 import ListView from '../components/ListView';
 
